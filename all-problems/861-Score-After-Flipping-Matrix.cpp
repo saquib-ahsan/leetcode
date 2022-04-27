@@ -1,6 +1,6 @@
 // APPROACH
 //     - AS EVERY ROW OF THE MATRIX IS REPRESENTED AS A NUMBER. SO THE NUMBER TO BE MAXIMUM, THE
-//       MOST SIGNIFICANT BIT MUST BE SET (TOGGLE THAT ROW)
+//       MOST SIGNIFICANT BIT MUST BE SET (TOGGLE THAT ROW IF NOT SET)
 //     - FOR EVERY COLOUMN, COUNT NUMBER OF SET AND UNSET BIT. IF NUMBER OF SET BITS IS LESS THAN
 //       THE NUMBER OF UNSET BITS, THEN TOGGLE THAT COLOUMN
 
@@ -10,7 +10,7 @@ public:
         int m = (int)grid.size();
         int n = (int)grid[0].size();
 
-        // check if rightmost bit is set or not
+        // check row if most significant bit is set or not
         for (int i = 0; i < m; ++i) {
             if (grid[i][0] == 1) continue;
 
