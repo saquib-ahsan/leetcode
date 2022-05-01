@@ -1,6 +1,7 @@
-// problem statement
+/* 
+problem statement:
 https://leetcode.com/problems/add-minimum-number-of-rungs/
-
+*/
 #define sz(x) (int)(x).size()
 
 class Solution {
