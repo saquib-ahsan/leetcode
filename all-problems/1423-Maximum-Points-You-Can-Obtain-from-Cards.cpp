@@ -1,4 +1,9 @@
 /*
+problem statement:
+https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/submissions/
+*/
+
+/*
 APPROACH
     - let's see how we can choose from left and right end
     -               LEFT    ||     RIGHT
