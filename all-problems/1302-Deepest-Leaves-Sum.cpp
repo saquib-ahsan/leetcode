@@ -40,3 +40,33 @@ public:
         return ans;
     }
 };
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ANOTHER APPROACH - RECURSIVE IMPLEMENTATION
+class Solution {
+private:
+    // function to calculate the tree height
+    int th(TreeNode *r) {
+        if(r == nullptr) return 0;
+        
+        return 1 + max(th(r->left), th(r->right));
+    }
+    
+    int solve(TreeNode *r, int curr_height) {
+        if(r == nullptr) return 0;
+        if(curr_height == 1) return r->val;
+        
+        int x = solve(r->left, curr_height-1);
+        int y = solve(r->right, curr_height-1);
+        return x + y;
+    }
+
+public:
+    int deepestLeavesSum(TreeNode* root) {
+        int tree_height = th(root);
+        int ans = solve(root, tree_height);
+        
+        return ans;
+    }
+};
