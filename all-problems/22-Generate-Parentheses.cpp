@@ -1,9 +1,8 @@
-// THE BELOW ALGORITHM NEEDS AN OPTIMIZATION
-
 #define vt vector
 #define eb emplace_back
 #define sz(x) (int)(x).size()
 
+// BRUTE FORCE SOLUTION - NEEDS AN OPTIMIZATION
 class Solution {
 private:
     bool is_valid_paren(const string &s) {
