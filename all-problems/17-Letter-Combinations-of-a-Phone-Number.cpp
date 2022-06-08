@@ -2,7 +2,7 @@
 #define pb push_back
 #define sz(x) (int)(x).size()
 
-static unordered_map<int, string> kv;
+static unordered_map<char, string> kv;
 
 class Solution {
 private:
@@ -12,7 +12,7 @@ private:
             return;
         }
         
-        string tmp = kv[digits[i] - '0'];
+        string tmp = kv[digits[i]];
         for(int j = 0; j < sz(tmp); ++j) {
             string t = s;
             t.pb(tmp[j]);
@@ -24,14 +24,14 @@ private:
 public:
     vector<string> letterCombinations(string digits) {
         for(const auto &c: digits) {
-            if(c == '2') kv[c - '0'] = "abc";
-            else if(c == '3') kv[c - '0'] = "def";
-            else if(c == '4') kv[c - '0'] = "ghi";
-            else if(c == '5') kv[c - '0'] = "jkl";
-            else if(c == '6') kv[c - '0'] = "mno";
-            else if(c == '7') kv[c - '0'] = "pqrs";
-            else if(c == '8') kv[c - '0'] = "tuv";
-            else if(c == '9') kv[c - '0'] = "wxyz";
+            if(c == '2') kv[c] = "abc";
+            else if(c == '3') kv[c] = "def";
+            else if(c == '4') kv[c] = "ghi";
+            else if(c == '5') kv[c] = "jkl";
+            else if(c == '6') kv[c] = "mno";
+            else if(c == '7') kv[c] = "pqrs";
+            else if(c == '8') kv[c] = "tuv";
+            else if(c == '9') kv[c] = "wxyz";
         }
         
         vt<string> ans;
