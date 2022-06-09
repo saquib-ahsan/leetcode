@@ -42,3 +42,35 @@ public:
         return ans;
     }
 };
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BACKTRACKING
+vector<string> ans;
+
+class Solution {
+private:
+    void solve(int n, int i, string s, int n_open, int n_close) {
+        if(i == 2*n) {
+            ans.push_back(s);
+        }
+        
+        // insert opening bracket
+        if(n_open < n) {
+            solve(n, i+1, s+'(', n_open+1, n_close);
+        }
+        
+        // insert closing bracket
+        if(n_close < n_open) {
+            solve(n, i+1, s+')', n_open, n_close + 1);
+        }
+    }
+    
+public:
+    vector<string> generateParenthesis(int n) {
+        ans.clear();
+        solve(n, 0, "", 0, 0);
+        return ans;
+    }
+};
