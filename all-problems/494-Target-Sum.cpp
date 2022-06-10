@@ -1,25 +1,28 @@
 #define vt vector
 #define sz(x) (int)(x).size()
 
-static int target_sum;
-
-// BRUTE FORCE SOLUTION
+// BRUTE FORCE SOLUTION (BACKTRACKING)
 class Solution {
 private:
-    int solve(vt<int> &nums, int i, int curr_sum) {
+    int solve(const vt<int> &nums, int i, int curr_sum, const int &target) {
         if (i >= sz(nums)) {
-            if (curr_sum == target_sum) return 1;
+            if (curr_sum == target) return 1;
             return 0;
         }
 
-        int pos_sign = solve(nums, i + 1, curr_sum + nums[i]);
-        int neg_sign = solve(nums, i + 1, curr_sum - nums[i]);
+        int pos_sign = solve(nums, i + 1, curr_sum + nums[i], target);
+        int neg_sign = solve(nums, i + 1, curr_sum - nums[i], target);
+        
         return pos_sign + neg_sign;
     }
 
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
-        target_sum = target;
-        return solve(nums, 0, 0);
+        return solve(nums, 0, 0, target);
     }
 };
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// DYNAMIC PROGRAMMING
