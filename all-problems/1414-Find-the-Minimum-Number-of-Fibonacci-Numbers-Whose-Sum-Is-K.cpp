@@ -18,7 +18,6 @@ public:
             sum = prev + curr;
         }
         
-        
         int ans = 0;
         for(int i = sz(dp)-1; ~i && k; --i) {
             if(k >= dp[i]) {
