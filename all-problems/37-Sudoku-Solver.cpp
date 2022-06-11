@@ -13,15 +13,16 @@ private:
             if((board[x][k] == num+'0') || (board[k][y] == num+'0')) return false;
         }
         
-        // check sub - grid
-        int sx = (x / n) * n, sy = (y / n) * n;
+        // check subgrid
+        int sx = (x / n) * n;   // x-coordinate of subgrid
+        int sy = (y / n) * n;   // y-coordinate of subgrid
         for(int i = sx; i < sx+n; ++i) {
             for(int j = sy; j < sy+n; ++j) {
                 if(board[i][j] == num+'0') return false;
             }
         }
         
-        // we can place the number
+        // hurray, we can place the number
         return true;
     }
     
