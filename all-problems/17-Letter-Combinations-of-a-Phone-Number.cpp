@@ -3,39 +3,39 @@
 #define sz(x) (int)(x).size()
 
 static unordered_map<char, string> kv;
+static vt<string> ans;
 
 class Solution {
-private:
-    void solve(string &digits, int i, string s, vt<string> &ans) {
-        if(i >= sz(digits)) {
+    void solve(const string &d, int i, string &s) {
+        if(i >= sz(d)) {
             if(sz(s)) ans.pb(s);
             return;
         }
         
-        string tmp = kv[digits[i]];
-        for(int j = 0; j < sz(tmp); ++j) {
-            string t = s;
-            t.pb(tmp[j]);
-            
-            solve(digits, i+1, t, ans);
+        string tmp = kv[d[i]];
+        for(const auto &c: tmp) {
+            s[i] = c;
+            solve(d, i+1, s);
         }
     }
     
 public:
     vector<string> letterCombinations(string digits) {
-        for(const auto &c: digits) {
-            if(c == '2') kv[c] = "abc";
-            else if(c == '3') kv[c] = "def";
-            else if(c == '4') kv[c] = "ghi";
-            else if(c == '5') kv[c] = "jkl";
-            else if(c == '6') kv[c] = "mno";
-            else if(c == '7') kv[c] = "pqrs";
-            else if(c == '8') kv[c] = "tuv";
-            else if(c == '9') kv[c] = "wxyz";
-        }
+        kv = {
+            {'2', "abc"},
+            {'3', "def"},
+            {'4', "ghi"},
+            {'5', "jkl"},
+            {'6', "mno"},
+            {'7', "pqrs"},
+            {'8', "tuv"},
+            {'9', "wxyz"}
+        };
         
-        vt<string> ans;
-        solve(digits, 0, "", ans);
+        ans.clear();
+        string s(sz(digits), 'x');
+        
+        solve(digits, 0, s);
         return ans;
     }
 };
