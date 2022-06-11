@@ -1,25 +1,31 @@
+#define vt vector
+#define pb push_back
+#define sz(x) (int)(x).size()
+
 class Solution {
 public:
     int findMinFibonacciNumbers(int k) {
-        vector<int> v = {1, 1};
-        int tmp = 2;
-        while(tmp <= k) {
-            v.push_back(tmp);
+        vt<int> dp = {1, 1};
+        int prev = dp[0], curr = dp[1];
+        
+        int sum = prev + curr;
+        while(sum <= k) {
+            dp.pb(sum);
             
-            int n = (int)v.size();
-            tmp = v[n-1] + v[n-2];
+            prev = curr;
+            curr = sum;
+            
+            sum = prev + curr;
         }
         
-        int cnt = 0;
-        int j = (int)v.size() - 1;
-        while(k > 0) {
-            if(k >= v[j]) {
-                k -= v[j];
-                ++cnt;
+        
+        int ans = 0;
+        for(int i = sz(dp)-1; ~i && k; --i) {
+            if(k >= dp[i]) {
+                ++ans;
+                k -= dp[i];
             }
-            
-            --j;
         }
-        return cnt;
+        return ans;
     }
 };
