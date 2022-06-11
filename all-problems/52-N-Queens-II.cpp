@@ -1,14 +1,12 @@
 #define vt vector
 #define pb push_back
-
-static int N;
-static int ans;
+#define sz(x) (int)(x).size()
 
 class Solution {
 private:
-    bool can_place(const vt<string> &board, int x, int y) {
+    bool queen_can_be_placed(const vt<string> &board, int x, int y) {
         // check column
-        for(int i = 0; i < x; ++i) {
+        for(int i = 0; i < sz(board); ++i) {
             if(board[i][y] == 'Q') return false;
         }
         
@@ -16,45 +14,43 @@ private:
         int i = x, j = y;
         while(~i && ~j) {
             if(board[i][j] == 'Q') return false;
-            
             --i; --j;
         }
         
         // check right diagonal
         i = x, j = y;
-        while(~i && j<N) {
+        while(~i && j<sz(board)) {
             if(board[i][j] == 'Q') return false;
-            
             --i; ++j;
         }
-        
         
         return true;
     }
     
-    void solve(int i, vt<string> &board) {
-        if(i >= N) {
-            ++ans;
-            return;
+    int solve(vt<string> &board, int i) {
+        if(i >= sz(board)) {
+            return 1;
         }
         
-        for(int j = 0; j < N; ++j) {
-            if(can_place(board, i, j)) {
+        int cnt = 0;
+        for(int j = 0; j < sz(board); ++j) {
+            bool can_place = queen_can_be_placed(board, i, j);
+            if(can_place) {
                 board[i][j] = 'Q';
-                solve(i+1, board);
+                cnt += solve(board, i+1);
                 
-                board[i][j] = '.'; // backtrack
+                board[i][j] = '.';  // backtrack
             }
         }
+        
+        return cnt;
     }
     
 public:
     int totalNQueens(int n) {
-        N = n;
         vt<string> board(n, string(n, '.'));
         
-        ans = 0;
-        solve(0, board);
+        int ans = solve(board, 0);
         return ans;
     }
 };
