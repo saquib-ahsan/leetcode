@@ -1,31 +1,31 @@
 #define vt vector
-#define sz(x) (int)(x).size()
 #define pb push_back
+#define sz(x) (int)(x).size()
 
-static const int mxN = 501;
-static vt<vt<int>> ans;
+const int mxN = 500;
+vt<vt<int>> ans;
 
 class Solution {
 private:
-    void solve(const vt<int> &c, int start, vt<int> &out, int j, int sum, int target) {
-        if(sum == target) {
-            ans.pb(vt<int>(out.begin(), out.begin()+j));
+    void solve(const vt<int> &c, int start, int remain_sum, vt<int> &out, int j) {
+        if(remain_sum <= 0 || start >= sz(c)) {
+            if(!remain_sum) ans.pb(vt<int>(out.begin(), out.begin()+j));
             return;
         }
-        if(sum > target) return;
         
         for(int i = start; i < sz(c); ++i) {
             out[j] = c[i];
-            solve(c, i, out, j+1, sum+c[i], target);
+            solve(c, i, remain_sum - c[i], out, j+1);
         }
     }
+    
     
 public:
     vector<vector<int>> combinationSum(vector<int>& c, int target) {
         ans.clear();
         
         vt<int> out(mxN, 0);
-        solve(c, 0, out, 0, 0, target);
+        solve(c, 0, target, out, 0);
         return ans;
     }
 };
