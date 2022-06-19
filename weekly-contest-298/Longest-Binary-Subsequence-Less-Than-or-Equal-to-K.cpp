@@ -8,7 +8,7 @@ public:
         for(int i = 0; i < n; ++i) {
             if(s[i] == '0') {
                 ++ans;
-            } else if(i < 31) {
+            } else if(i < 31) {     // !important condition (i < 31)
                 if(k >= (1<<i)) {
                     ++ans;
                     k -= (1<<i);
