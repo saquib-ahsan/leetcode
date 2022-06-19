@@ -19,3 +19,5 @@ public:
         return ans;
     }
 };
+
+// Note: k = 10^9 = 2^30 (approx), ^ represents power.
