@@ -31,4 +31,4 @@ public:
     }
 };
 
-// P.S: I have used Physics derivation to solve this question, LOL!
+// P.S: Interestingly, I have used Physics derivation to solve this question, LOL!
