@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ 
+ // SIMPLE SUBARRAY PROBLEM
 class Solution {
 public:
     ListNode* removeZeroSumSublists(ListNode* head) {
