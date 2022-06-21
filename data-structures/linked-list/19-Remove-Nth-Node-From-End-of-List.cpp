@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+// follow up: processed in a single pass
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
