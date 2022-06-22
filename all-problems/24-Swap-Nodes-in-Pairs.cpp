@@ -29,26 +29,27 @@ public:
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        if(head == nullptr || head->next == nullptr) return head;
+        if(!head || !head->next) return head;
         
-        ListNode *ans = nullptr, *last = nullptr;
+        ListNode *a = head, *b = head->next;
+        head = head->next->next;
+        b->next = a;
+        a->next = nullptr;
+        
+        ListNode *ans = b, *last = a;
         while(head && head->next) {
-            ListNode *a = head, *b = head->next;
-            head = b->next;
+            a = head;
+            b = head->next;
+            head = head->next->next;
             
             b->next = a;
             a->next = nullptr;
             
-            if(ans) {
-                last->next = b;
-                last = a;
-            } else {
-                ans = b;
-                last = a;
-            }
+            last->next = b;
+            last = a;
         }
         
-        last->next = head;
+        if(head) last->next = head;
         return ans;
     }
 };
