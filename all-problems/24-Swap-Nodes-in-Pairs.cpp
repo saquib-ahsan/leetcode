@@ -15,7 +15,6 @@ public:
         
         ListNode *a = head, *b = head->next;
         head = b->next;
-        b->next = nullptr;
         
         b->next = a;
         a->next = swapPairs(head);
