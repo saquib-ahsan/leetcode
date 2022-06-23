@@ -8,16 +8,6 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-// merge sort, time complexity = O(NlogN)
-// verdict = accepted
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// insertion sort, time complexity = O(N^2)
-// TLE
 class Solution {
 private:
     ListNode *insert_in_linked_list(ListNode *head, ListNode *node) {
@@ -38,7 +28,7 @@ private:
     }
     
 public:
-    ListNode* sortList(ListNode* head) {
+    ListNode* insertionSortList(ListNode* head) {
         ListNode *ans = nullptr;
         
         while(head) {
