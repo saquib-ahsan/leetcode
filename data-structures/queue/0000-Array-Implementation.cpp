@@ -57,9 +57,6 @@ int Queue::frontval() {
 
 
 int main() {
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-
 	Queue q;
 	q.enqueue(1);
 	q.enqueue(2);
