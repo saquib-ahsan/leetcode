@@ -7,6 +7,7 @@ class Queue {
 private:
 	int arr[N];
 	int front, rear;
+	
 public:
 	// methods
 	void enqueue(int x);
