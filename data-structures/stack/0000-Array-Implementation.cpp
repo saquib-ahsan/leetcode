@@ -58,3 +58,5 @@ int main() {
 
 // P.S.: We can increase the array size in case we hit an overflow by using dynamic array. Check if it is an overflow, create
 // a new array (generally doubled size of previous one) and copy the data from older array.
+// But it would take O(N) time complexity. In other words, in worst case, time complexity = O(N)
+// Overall average time complexity = O(1) (constant)
